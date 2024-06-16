@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include "header.html" %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('https://images.unsplash.com/photo-1509664158680-07c5032b51e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Here are your colors!</h1>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="container-fluid">
+        <img src="{{ file }}" width="400px">
+
+<!-- Main content goes here-->
+          <div class="container">
+           {% for index,value in colors.iterrows() %}
+      <div class="col-md-4 border" style="background-color: rgb{{ value['RGB_value'] }};">{{ index + 1 }}. {{ value['Percentage'] }}% / RGB{{ value['RGB_value'] }}</div>
+
+        {% endfor %}
+          </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+{% include "footer.html" %}
+{% endblock %}
